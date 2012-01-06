@@ -1,0 +1,40 @@
+apply plugin:'groovy'
+apply plugin:'application'
+apply plugin: 'maven'
+
+// Set Maven coordinates
+group = 'org.codehaus.groovy.modules.groovyfx'
+archivesBaseName = "GroovyPresentFX"
+version = '0.1-SNAPSHOT'
+
+// Read environment and set properties
+javafxHome = System.env['JAVAFX_HOME']
+groovyfxHome = System.env['GROOVYFX']
+isRelease = !version.endsWith('SNAPSHOT')
+
+description = "Groovy Presentation From Xmas"
+mainClassName = "main.groovy.gpresentfx.GroovyPresentFX"
+test.maxParallelForks = 5
+
+repositories {
+    mavenCentral()
+}
+dependencies {
+  groovy group:'org.codehaus.groovy', name:'groovy-all', version:'1.8.4'
+  compile 'asm:asm:3.2'
+  compile files("${javafxHome}/rt/lib/jfxrt.jar")
+  compile files("${groovyfxHome}")
+	testCompile group:'org.spockframework', name:'spock-core', version:'0.5-groovyfx-1.8'
+
+    // optional dependencies for using Spock
+    testCompile "org.hamcrest:hamcrest-core:1.2"
+    testRuntime "cglib:cglib-nodep:2.2"
+    testRuntime "org.objenesis:objenesis:1.2"
+}
+
+// Executable Jar
+jar {
+  from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+}
+
+manifest.mainAttributes("Main-Class" : mainClassName)
