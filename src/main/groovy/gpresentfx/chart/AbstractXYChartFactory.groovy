@@ -54,7 +54,7 @@ class AbstractXYChartFactory extends AbstractChartFactory{
     if(axis instanceof NumberAxis){
       if(attribute[xAutoRangeKeyword] != null && !attribute[xAutoRangeKeyword])
         axis.setAutoRanging(false)
-      else if(attribute[xAutoRangeKeyword] != null)
+      else
         axis.setAutoRanging(true)
     }
   }
@@ -63,14 +63,24 @@ class AbstractXYChartFactory extends AbstractChartFactory{
     if(axis instanceof NumberAxis){
       if(attribute[yAutoRangeKeyword] != null && !attribute[yAutoRangeKeyword])
         axis.setAutoRanging(false)
-      else if(attribute[yAutoRangeKeyword] != null)
+      else
         axis.setAutoRanging(true)
     }
   }
 
+  private static void setXAxisTitle(Axis axis, Map attribute){
+    if(attribute[xTitleKeyword] != null)
+      axis.setLabel(attribute[xTitleKeyword].toString())
+  }
+
+  private static void setYAxisTitle(Axis axis, Map attribute){
+    if(attribute[yTitleKeyword] != null)
+      axis.setLabel(attribute[yTitleKeyword].toString())
+  }
+
   protected static Axis createXAxis(Map attribute){
     Axis axis
-    if(attribute[xAxisCategoryKeyword] != null)
+    if(attribute[xAxisCategoryKeyword] != null && attribute[xAxisCategoryKeyword])
       axis = new CategoryAxis()
     else
       axis = new NumberAxis()
@@ -78,13 +88,14 @@ class AbstractXYChartFactory extends AbstractChartFactory{
     setXRange(axis, attribute)
     setXTickUnit(axis, attribute)
     setXAutoRange(axis, attribute)
+    setXAxisTitle(axis, attribute)
 
     return axis
   }
 
   protected static Axis createYAxis(Map attribute){
     Axis axis
-    if(attribute[yAxisCategoryKeyword] != null)
+    if(attribute[yAxisCategoryKeyword] != null && attribute[yAxisCategoryKeyword])
       axis = new CategoryAxis()
     else
       axis = new NumberAxis()
@@ -92,6 +103,7 @@ class AbstractXYChartFactory extends AbstractChartFactory{
     setYRange(axis, attribute)
     setYTickUnit(axis, attribute)
     setYAutoRange(axis, attribute)
+    setYAxisTitle(axis, attribute)
 
     return axis
   }

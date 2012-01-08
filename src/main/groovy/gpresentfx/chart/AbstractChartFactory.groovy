@@ -14,6 +14,6 @@ abstract class AbstractChartFactory extends AbstractRegionFactory {
     if(attribute[titleKeyword] != null)
       chart.setTitle(attribute[titleKeyword].toString())
     if(attribute[titleSideKeyword] != null)
-      chart.setTitleSide(Side.valueOf(attribute[titleSideKeyword].toString()))
+      chart.setTitleSide(Side.valueOf(attribute[titleSideKeyword].toString().toUpperCase()))
   }
 }

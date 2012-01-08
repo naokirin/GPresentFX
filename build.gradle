@@ -2,6 +2,8 @@ apply plugin:'groovy'
 apply plugin:'application'
 apply plugin: 'maven'
 
+defaultEncoding = 'UTF-8'
+
 // Set Maven coordinates
 group = 'org.codehaus.groovy.modules.groovyfx'
 archivesBaseName = "GroovyPresentFX"
@@ -30,6 +32,21 @@ dependencies {
     testCompile "org.hamcrest:hamcrest-core:1.2"
     testRuntime "cglib:cglib-nodep:2.2"
     testRuntime "org.objenesis:objenesis:1.2"
+}
+
+compileJava {
+    options.encoding = defaultEncoding
+}
+compileTestJava {
+    options.encoding = defaultEncoding
+}
+compileGroovy {
+    groovyOptions.encoding = defaultEncoding
+    options.encoding = defaultEncoding
+}
+compileTestGroovy {
+    groovyOptions.encoding = defaultEncoding
+    options.encoding = defaultEncoding
 }
 
 // Executable Jar
