@@ -75,8 +75,8 @@ def timebox = {GPresentBuilder.dsl().vbox([{GPresentBuilder.dsl(fontfamily:"IPA 
 }
 
 // DSLスクリプトはslidesが最終的に処理されるようになっている必要がある
-GPresentBuilder.dsl().slides(name:"Groovy Presentation FX", width:1024, height: 700, alignment:"center", background:"steelblue",
-  fontfamily:"IPA Pゴシック", fontsize: 50, padding:[20,0], pagecounter:true){
+GPresentBuilder.dsl(alignment:"center", background:"steelblue", fontfamily:"IPA Pゴシック", fontsize: 50, padding:[20, 0], width:1024, height: 700)
+  .slides(name:"Groovy Presentation FX", pagecounter:true){
 
   slide{
     text(text:"DSLで作れるプレゼン", fontsize: 90, textcolor:"floralwhite")

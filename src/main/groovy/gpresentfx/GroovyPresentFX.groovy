@@ -22,15 +22,15 @@ import javafx.scene.input.KeyEvent
  */
 class GroovyPresentFX extends Application{
 
-  static StackPane topPane = new StackPane()
-  static int page = 0
-  static Slides slides
-  static List slideList
-  static def currentSlide
+  private static StackPane topPane = new StackPane()
+  private static int page = 0
+  private static Slides slides
+  private static List slideList
+  private static def currentSlide
   // ページカウンター
-  static int pageCounter = 0
-  static def incCounter = { if(pageCounter < page - 1) pageCounter+=1 }
-  static def decCounter = { if(pageCounter > 0) pageCounter-=1}
+  private static int pageCounter = 0
+  private static def incCounter = { if(pageCounter < page - 1) pageCounter+=1 }
+  private static def decCounter = { if(pageCounter > 0) pageCounter-=1}
 
   // 表示を変更する
   static def slideUpdate ={
@@ -114,7 +114,7 @@ class GroovyPresentFX extends Application{
       slides = new Slides()
     }
     else{
-      slideList = slides.present
+      slideList = slides.presents
     }
 
     page = slideList.size()
@@ -129,14 +129,14 @@ class GroovyPresentFX extends Application{
       }
     })
 
-    Scene scene = new Scene(topPane, slides.width, slides.height)
+    Scene scene = new Scene(topPane)
     scene.setOnKeyReleased(new EventHandler(){
       void handle(Event event){
         event = event as KeyEvent
         // F5でDSLスクリプトのリロード
         if(event.getCode() == KeyCode.F5){
           def newSlides = readPresentation()
-          slideList = newSlides.present
+          slideList = newSlides.presents
           page = slideList.size()
           if(page > pageCounter)
             currentSlide = slideList[pageCounter]

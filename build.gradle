@@ -24,7 +24,7 @@ dependencies {
   compile 'asm:asm:3.2'
   compile files("${javafxHome}/rt/lib/jfxrt.jar")
   compile files("${groovyfxHome}")
-	testCompile group:'org.spockframework', name:'spock-core', version:'0.5-groovyfx-1.8'
+	testCompile group:'org.spockframework', name:'spock-core', version:'0.5-groovy-1.8'
 
     // optional dependencies for using Spock
     testCompile "org.hamcrest:hamcrest-core:1.2"

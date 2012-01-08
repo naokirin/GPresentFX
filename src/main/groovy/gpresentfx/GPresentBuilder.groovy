@@ -8,7 +8,6 @@ import main.groovy.gpresentfx.layout.*
 import main.groovy.gpresentfx.chart.*
 import main.groovy.gpresentfx.text.*
 import main.groovy.gpresentfx.image.*
-import main.groovy.gpresentfx.web.WebViewFactory
 
 /**
  * @author naokirin
@@ -71,6 +70,8 @@ class GPresentBuilder extends BuilderSupport{
       bubblechart : {pdb, attribute -> return BubbleChartFactory.newInstance(pdb, attribute)},
       textarea : {pdb, attribute -> return TextAreaFactory.newInstance(pdb, attribute)}]
 
+  private GPresentBuilder(){}
+
   // GPresentBuilderのインスタンスを生成
   static GPresentBuilder dsl(){
    return new GPresentBuilder()
@@ -79,19 +80,32 @@ class GPresentBuilder extends BuilderSupport{
   // GPresentBuilderのインスタンスを生成
   static GPresentBuilder dsl(Map attribute){
     def obj = new GPresentBuilder()
-    if(attribute[windowWidthKeyword])
+    if(attribute[windowWidthKeyword] != null)
       obj.defaultWidth = (float)attribute[windowWidthKeyword]
-    if(attribute[windowHeightKeyword])
+    if(attribute[windowHeightKeyword] != null)
       obj.defaultHeight = (float)attribute[windowHeightKeyword]
-    if(attribute[alignmentKeyword])
+    if(attribute[alignmentKeyword] != null)
       obj.defaultAlignment = TreatingAlignment.stringToAlignment(attribute[alignmentKeyword].toString())
-    if(attribute[backgroundKeyword])
+    if(attribute[paddingKeyword] != null){
+      if(attribute[paddingKeyword] instanceof List){
+        def padding = attribute[paddingKeyword] as List
+        if(padding.size() == 4)
+          obj.defaultPadding = new Insets((double)padding[0], (double)padding[1], (double)padding[2], (double)padding[3])
+        if(padding.size() == 2)
+          obj.defaultPadding = new Insets((double)padding[0], (double)padding[1], (double)padding[0], (double)padding[1])
+      }
+      else{
+        def padding = (double)attribute[paddingKeyword]
+        obj.defaultPadding = new Insets(padding, padding, padding, padding)
+      }
+    }
+    if(attribute[backgroundKeyword] != null)
       obj.defaultBackground = attribute[backgroundKeyword].toString()
-    if(attribute[textColorKeyword])
+    if(attribute[textColorKeyword] != null)
       obj.defaultTextColor = attribute[textColorKeyword].toString()
-    if(attribute[fontSizeKeyword])
+    if(attribute[fontSizeKeyword] != null)
       obj.defaultFontSize = (int)attribute[fontSizeKeyword]
-    if(attribute[fontFamilyKeyword])
+    if(attribute[fontFamilyKeyword] != null)
       obj.defaultFontFamily = attribute[fontFamilyKeyword]
 
     return obj
@@ -101,7 +115,7 @@ class GPresentBuilder extends BuilderSupport{
   protected void setParent(Object parent, Object child){
     if(parent != null && child != null){
       if(parent instanceof Slides)
-        parent.present << child
+        parent.presents << child
       else if(parent instanceof BorderPane && child.metaClass.hasProperty(child, 'borderPos')){
         if(child.getBorderPos() == borderTopKeyword)
           parent.setTop(child as Node)
