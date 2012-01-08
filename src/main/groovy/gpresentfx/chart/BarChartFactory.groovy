@@ -5,6 +5,9 @@ import javafx.scene.chart.XYChart
 import javafx.collections.FXCollections
 import com.sun.javafx.collections.ObservableListWrapper
 import main.groovy.gpresentfx.GPresentBuilder
+import javafx.scene.chart.Axis
+import javafx.scene.chart.NumberAxis
+import javafx.scene.chart.CategoryAxis
 
 /**
  * @author naokirin
@@ -54,5 +57,19 @@ class BarChartFactory extends AbstractXYChartFactory{
   private static void setCategoryGap(BarChart chart, Map attribute, GPresentBuilder pdb){
     if(attribute[categoryGapKeyword] != null)
       chart.setCategoryGap((double)attribute[categoryGapKeyword])
+  }
+    protected static Axis createXAxis(Map attribute){
+    Axis axis
+    if(attribute[xAxisCategoryKeyword] != null && !attribute[xAxisCategoryKeyword])
+      axis = new NumberAxis()
+    else
+      axis = new CategoryAxis()
+
+    setXRange(axis, attribute)
+    setXTickUnit(axis, attribute)
+    setXAutoRange(axis, attribute)
+    setXAxisTitle(axis, attribute)
+
+    return axis
   }
 }

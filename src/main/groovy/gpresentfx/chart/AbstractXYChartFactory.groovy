@@ -16,7 +16,7 @@ class AbstractXYChartFactory extends AbstractChartFactory{
   static final String xTickUnitKeyword = 'xunit'
   static final String yTickUnitKeyword = 'yunit'
 
-  private static void setXRange(Axis axis, Map attribute){
+   static void setXRange(Axis axis, Map attribute){
     if(axis instanceof NumberAxis){
       if(attribute[xRangeKeyword] != null){
         axis.setLowerBound((double)attribute[xRangeKeyword][0])
@@ -26,7 +26,7 @@ class AbstractXYChartFactory extends AbstractChartFactory{
     }
   }
 
-  private static void setYRange(Axis axis, Map attribute){
+   static void setYRange(Axis axis, Map attribute){
     if(axis instanceof NumberAxis){
       if(attribute[yRangeKeyword] != null){
         axis.setLowerBound((double)attribute[yRangeKeyword][0])
@@ -36,21 +36,21 @@ class AbstractXYChartFactory extends AbstractChartFactory{
     }
   }
 
-  private static void setXTickUnit(Axis axis, Map attribute){
+   static void setXTickUnit(Axis axis, Map attribute){
     if(axis instanceof NumberAxis){
       if(attribute[xTickUnitKeyword] != null)
         axis.setTickUnit((double)attribute[xTickUnitKeyword])
     }
   }
 
-  private static void setYTickUnit(Axis axis, Map attribute){
+   static void setYTickUnit(Axis axis, Map attribute){
     if(axis instanceof NumberAxis){
       if(attribute[yTickUnitKeyword] != null)
         axis.setTickUnit((double)attribute[yTickUnitKeyword])
     }
   }
 
-  private static void setXAutoRange(Axis axis, Map attribute){
+   static void setXAutoRange(Axis axis, Map attribute){
     if(axis instanceof NumberAxis){
       if(attribute[xAutoRangeKeyword] != null && !attribute[xAutoRangeKeyword])
         axis.setAutoRanging(false)
@@ -59,7 +59,7 @@ class AbstractXYChartFactory extends AbstractChartFactory{
     }
   }
 
-  private static void setYAutoRange(Axis axis, Map attribute){
+   static void setYAutoRange(Axis axis, Map attribute){
     if(axis instanceof NumberAxis){
       if(attribute[yAutoRangeKeyword] != null && !attribute[yAutoRangeKeyword])
         axis.setAutoRanging(false)
@@ -68,12 +68,12 @@ class AbstractXYChartFactory extends AbstractChartFactory{
     }
   }
 
-  private static void setXAxisTitle(Axis axis, Map attribute){
+   static void setXAxisTitle(Axis axis, Map attribute){
     if(attribute[xTitleKeyword] != null)
       axis.setLabel(attribute[xTitleKeyword].toString())
   }
 
-  private static void setYAxisTitle(Axis axis, Map attribute){
+   static void setYAxisTitle(Axis axis, Map attribute){
     if(attribute[yTitleKeyword] != null)
       axis.setLabel(attribute[yTitleKeyword].toString())
   }
