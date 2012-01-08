@@ -27,15 +27,15 @@ class ScatterChartFactory extends AbstractXYChartFactory{
 
     /** チャートのデータを生成する */
   private static ObservableListWrapper createData(Map attribute){
-    def areaChartSeriesList = []
+    def scatterChartSeriesList = []
     if(attribute[main.groovy.gpresentfx.chart.AbstractChartFactory.chartDataKeyword] instanceof Map)
     (attribute[main.groovy.gpresentfx.chart.AbstractChartFactory.chartDataKeyword] as Map).each{series, data ->
-      def areaChartSeries = []
+      def scatterChartSeries = []
       data.each{xValue, yValue ->
-        areaChartSeries << new XYChart.Data(xValue, yValue)
+        scatterChartSeries << new XYChart.Data(xValue, yValue)
       }
-      areaChartSeriesList << new XYChart.Series(series.toString(), FXCollections.observableArrayList(areaChartSeries))
+      scatterChartSeriesList << new XYChart.Series(series.toString(), FXCollections.observableArrayList(scatterChartSeries))
     }
-    return FXCollections.observableArrayList(areaChartSeriesList)
+    return FXCollections.observableArrayList(scatterChartSeriesList)
   }
 }
