@@ -70,6 +70,47 @@ class GPresentBuilder extends BuilderSupport{
       bubblechart : {pdb, attribute -> return BubbleChartFactory.newInstance(pdb, attribute)},
       textarea : {pdb, attribute -> return TextAreaFactory.newInstance(pdb, attribute)}]
 
+  static List settingParentList =[
+    new SettingParentInterface(){
+      boolean setParent(Object parent, Object child){
+        if(parent instanceof BorderPane && child.metaClass.hasProperty(child, 'borderPos')){
+          if(child.getBorderPos() == borderTopKeyword){
+            parent.setTop(child)
+            return true
+          }
+          else if(child.getBorderPos() == borderLeftKeyword){
+            parent.setLeft(child)
+            return true
+          }
+          else if(child.getBorderPos() == borderCenterKeyword){
+            parent.setCenter(child)
+            return true
+          }
+          else if(child.getBorderPos() == borderRightKeyword){
+            parent.setRight(child)
+            return true
+          }
+          else if(child.getBorderPos() == borderBottomKeyword){
+            parent.setBottom(child)
+            return true
+          }
+          else
+            return false
+        }
+        else
+          return false
+      }
+    },
+    new SettingParentInterface(){
+      boolean setParent(Object parent, Object child){
+        if(parent instanceof Slides){
+          parent.presents << child
+          return true
+        }
+        return false
+      }
+    }]
+
   private GPresentBuilder(){}
 
   // GPresentBuilderのインスタンスを生成
@@ -114,21 +155,12 @@ class GPresentBuilder extends BuilderSupport{
   /** 親子関係の処理 */
   protected void setParent(Object parent, Object child){
     if(parent != null && child != null){
-      if(parent instanceof Slides)
-        parent.presents << child
-      else if(parent instanceof BorderPane && child.metaClass.hasProperty(child, 'borderPos')){
-        if(child.getBorderPos() == borderTopKeyword)
-          parent.setTop(child as Node)
-        else if(child.getBorderPos() == borderLeftKeyword)
-          parent.setLeft(child as Node)
-        else if(child.getBorderPos() == borderCenterKeyword)
-          parent.setCenter(child as Node)
-        else if(child.getBorderPos() == borderRightKeyword)
-          parent.setRight(child as Node)
-        else if(child.getBorderPos() == borderBottomKeyword)
-          parent.setBottom(child as Node)
+      boolean flag = false
+      settingParentList.each{
+        if(it.setParent(parent, child))
+          flag = true
       }
-      else
+      if(!flag)
         parent.children.add(child)
     }
   }

@@ -62,34 +62,25 @@
       <file leaf-file-name="build.gradle" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="24" selection-start="205" selection-end="205" vertical-scroll-proportion="0.0">
+            <state line="15" column="0" selection-start="392" selection-end="392" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GroovyPresentFX.groovy" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="GroovyPresentFX.groovy" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/groovy/gpresentfx/GroovyPresentFX.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="167" column="30" selection-start="4739" selection-end="4739" vertical-scroll-proportion="0.0">
+            <state line="102" column="30" selection-start="2822" selection-end="2822" vertical-scroll-proportion="0.031135531">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GPresentBuilder.groovy" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/groovy/gpresentfx/GPresentBuilder.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="71" column="87" selection-start="3640" selection-end="3640" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="present.groovy" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="present.groovy" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/script/present.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="264" column="0" selection-start="8191" selection-end="8191" vertical-scroll-proportion="0.22183098">
+            <state line="144" column="86" selection-start="5026" selection-end="5026" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -109,22 +100,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/groovy/gpresentfx/layout/BoxLayoutFactory.groovy" />
-        <option value="$PROJECT_DIR$/src/main/groovy/gpresentfx/layout/BorderPaneFactory.groovy" />
-        <option value="$PROJECT_DIR$/src/main/groovy/gpresentfx/TableViewFactory.groovy" />
-        <option value="$PROJECT_DIR$/src/main/groovy/gpresentfx/layout/SlideFactory.groovy" />
-        <option value="$PROJECT_DIR$/src/main/groovy/gpresentfx/tableview/TableViewFactory.groovy" />
-        <option value="$PROJECT_DIR$/src/main/groovy/gpresentfx/InterfaceGPresentFactory.groovy" />
-        <option value="$PROJECT_DIR$/script/CirclePlugin.groovy" />
-        <option value="$PROJECT_DIR$/plugin/CirclePlugin.groovy" />
         <option value="$PROJECT_DIR$/src/main/groovy/gpresentfx/layout/Slides.groovy" />
         <option value="$PROJECT_DIR$/src/main/groovy/gpresentfx/layout/SlidesFactory.groovy" />
         <option value="$PROJECT_DIR$/src/main/groovy/gpresentfx/text/TextAreaFactory.groovy" />
-        <option value="$PROJECT_DIR$/src/main/groovy/gpresentfx/GroovyPresentFX.groovy" />
         <option value="$PROJECT_DIR$/src/main/groovy/gpresentfx/web/WebViewFactory.groovy" />
+        <option value="$PROJECT_DIR$/plugin/default/TextFactory.groovy" />
         <option value="$PROJECT_DIR$/script/present.groovy" />
-        <option value="$PROJECT_DIR$/src/main/groovy/gpresentfx/GPresentBuilder.groovy" />
+        <option value="$PROJECT_DIR$/plugin/CirclePlugin.groovy" />
+        <option value="$PROJECT_DIR$/plugin/settingParent/SlidesSettingParent.groovy" />
+        <option value="$PROJECT_DIR$/src/main/groovy/gpresentfx/GroovyPresentFX.groovy" />
         <option value="$PROJECT_DIR$/src/main/groovy/gpresentfx/PluginInterface.groovy" />
+        <option value="$PROJECT_DIR$/src/main/groovy/gpresentfx/SettingParentInterface.groovy" />
+        <option value="$PROJECT_DIR$/plugin/settingParent/BorderSettingParent.groovy" />
+        <option value="$PROJECT_DIR$/src/main/groovy/gpresentfx/GPresentBuilder.groovy" />
+        <option value="$PROJECT_DIR$/plugin/default/TextPlugin.groovy" />
+        <option value="$PROJECT_DIR$/src/main/groovy/gpresentfx/text/TextFactory.groovy" />
+        <option value="$PROJECT_DIR$/plugin/default/RedCirclePlugin.groovy" />
       </list>
     </option>
   </component>
@@ -161,9 +152,9 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="Favorites" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -196,7 +187,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="groovyfxSample" />
+              <option name="myItemId" value="GPresentFX" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -206,7 +197,21 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="GPresentFX" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
               <option name="myItemId" value="groovyfxSample" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GPresentFX" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -224,11 +229,19 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="groovyfxSample" />
+              <option name="myItemId" value="GPresentFX" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="script" />
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gpresentfx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="text" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -238,11 +251,29 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="groovyfxSample" />
+              <option name="myItemId" value="GPresentFX" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="plugin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groovyfxSample" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GPresentFX" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plugin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="default" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -264,9 +295,9 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -474,21 +505,21 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Leiningen" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Output" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.43079585" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43079585" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39965397" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32698962" sideWeight="0.0" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2755725" sideWeight="0.56920415" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32977098" sideWeight="0.56920415" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3259542" sideWeight="0.56920415" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3252595" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32698962" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32698962" sideWeight="0.0" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -540,58 +571,9 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/groovy/gpresentfx/layout/AbstractLayoutFactory.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="691" selection-end="691" vertical-scroll-proportion="0.8759124" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/groovy/gpresentfx/layout/BorderPaneFactory.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="21" selection-start="975" selection-end="975" vertical-scroll-proportion="1.0076482" />
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Oracle/JavaFX 2.0 SDK/rt/lib/jfxrt.jar!/javafx/application/Preloader.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="0" selection-start="3242" selection-end="3242" vertical-scroll-proportion="0.41379312" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/groovy/gpresentfx/layout/BoxLayoutFactory.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="146" selection-end="146" vertical-scroll-proportion="0.062043797" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/groovy/gpresentfx/text/TextFactory.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="6" selection-start="997" selection-end="997" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/CirclePlugin.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="35" selection-start="298" selection-end="298" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/groovy/gpresentfx/layout/SlidesFactory.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="242" selection-end="242" vertical-scroll-proportion="0.9306569" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="24" selection-start="205" selection-end="205" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/groovy/gpresentfx/text/TextAreaFactory.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="30" selection-start="1115" selection-end="1115" vertical-scroll-proportion="0.03250478">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Oracle/JavaFX 2.0 SDK/rt/lib/jfxrt.jar!/com/sun/webpane/sg/InputMethodClientImpl.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="1311" selection-end="1311" vertical-scroll-proportion="0.6832298">
-          <folding />
-        </state>
+        <state line="27" column="0" selection-start="1311" selection-end="1311" vertical-scroll-proportion="0.6832298" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/groovy/gpresentfx/layout/SlideFactory.groovy">
@@ -603,35 +585,69 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/groovy/gpresentfx/web/WebViewFactory.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="0" selection-start="1580" selection-end="1580" vertical-scroll-proportion="0.0">
+        <state line="49" column="0" selection-start="1580" selection-end="1580" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/groovy/gpresentfx/chart/BarChartFactory.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="21" selection-start="591" selection-end="591" vertical-scroll-proportion="0.057239056">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/groovy/gpresentfx/layout/SlidesFactory.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="0" selection-start="263" selection-end="263" vertical-scroll-proportion="0.8013468">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/groovy/gpresentfx/PluginInterface.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="38" selection-start="291" selection-end="291" vertical-scroll-proportion="0.6296296">
+        <state line="3" column="0" selection-start="57" selection-end="57" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/groovy/gpresentfx/SettingParentInterface.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="32" selection-end="32" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/groovy/gpresentfx/text/TextFactory.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="0" selection-start="227" selection-end="227" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin/default/RedCirclePlugin.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="79" selection-end="79" vertical-scroll-proportion="0.124087594" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/groovy/gpresentfx/GPresentBuilder.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="87" selection-start="3640" selection-end="3640" vertical-scroll-proportion="0.0">
+        <state line="62" column="80" selection-start="2864" selection-end="2864" vertical-scroll-proportion="0.43434343">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="0" selection-start="392" selection-end="392" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/present.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="144" column="86" selection-start="5026" selection-end="5026" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/groovy/gpresentfx/GroovyPresentFX.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="167" column="30" selection-start="4739" selection-end="4739" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/present.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="264" column="0" selection-start="8191" selection-end="8191" vertical-scroll-proportion="0.22183098">
+        <state line="102" column="30" selection-start="2822" selection-end="2822" vertical-scroll-proportion="0.031135531">
           <folding />
         </state>
       </provider>

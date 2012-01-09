@@ -1,5 +1,4 @@
 package main.groovy.gpresentfx.text
-
 import javafx.scene.text.Text
 
 import javafx.scene.text.Font
@@ -7,6 +6,7 @@ import javafx.scene.paint.Color
 import main.groovy.gpresentfx.GPresentBuilder
 
 import main.groovy.gpresentfx.AbstractNodeFactory
+
 /**
  * @author naokirin
  * Textを生成するファクトリクラス

@@ -142,7 +142,7 @@ GPresentBuilder.dsl(alignment:"center", background:"steelblue", fontfamily:"IPA 
       barchart(xcategory:true,
         data:["Abstract":["A":10, "B": 13], "Interface":["A":3, "B":6], "Class":["A":31, "B":38]],
         categorygap:10, bargap:0)
-      barchart(data:["":[1:'1', 2:'2', 3:'3', 4:'4']], ycategory:true)
+      barchart(data:["":[1:'1', 2:'2', 3:'3', 4:'4']], ycategory:true, xcategory:false)
     }
   }
 

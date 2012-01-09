@@ -86,7 +86,7 @@ class GroovyPresentFX extends Application{
       def gse = new GroovyScriptEngine(paths)
       def binding = [input:''] as Binding
 
-      return gse.run(file.toString(), binding) as PluginInterface
+      return gse.run(file.toString(), binding)
     }
 
     // TODO: 実行時引数で読みこむスクリプトを指定できるようにする
@@ -99,11 +99,17 @@ class GroovyPresentFX extends Application{
       return gse.run('present.groovy', binding) as Slides
     }
 
-    new File('./plugin').eachFile{file ->
+    new File('./plugin/settingParent').eachFileRecurse{file ->
+      if(file.toString() ==~ /.*SettingParent\.groovy/){
+        def plugin = readPlugin(file.toString()) as SettingParentInterface
+        GPresentBuilder.settingParentList << plugin
+      }
+    }
+    new File('./plugin').eachFileRecurse{file ->
       if(file.toString() ==~ /.*Plugin\.groovy/){
-      def plugin = readPlugin(file.toString())
-      if(GPresentBuilder.dslBranchingMap[plugin.name] == null)
-        GPresentBuilder.dslBranchingMap[plugin.name] = plugin.closure
+        def plugin = readPlugin(file.toString()) as PluginInterface
+        if(GPresentBuilder.dslBranchingMap[plugin.name] == null)
+          GPresentBuilder.dslBranchingMap[plugin.name] = plugin.closure
       }
     }
 
