@@ -1,5 +1,4 @@
 import javafx.scene.shape.Circle
-import main.groovy.gpresentfx.PluginInterface
 import javafx.scene.paint.Color
 
 new PluginInterface(){

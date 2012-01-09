@@ -1,9 +1,7 @@
-import main.groovy.gpresentfx.GPresentBuilder
-
 // スライドオブジェクトを生成するクロージャ
 // 同じような表示を繰り返し使うときに便利
 def cacheSlide = {
-  GPresentBuilder.dsl(width:530, height: 500, alignment:"center", background:"steelblue",
+  dsl(width:530, height: 500, alignment:"center", background:"steelblue",
     fontfamily:"IPA Pゴシック", fontsize: 50).stack{
     text(text:"○", fontsize:230, textcolor: "red")
     text(text:"Java", fontsize:70, textcolor:"red")
@@ -11,7 +9,7 @@ def cacheSlide = {
 }
 
 def sunSlide = {
-  GPresentBuilder.dsl(fontfamily:"IPA Pゴシック", fontsize:50).stack(width:530, height: 500){
+  dsl(fontfamily:"IPA Pゴシック", fontsize:50).stack(width:530, height: 500){
 
     border(rotate:10){
       left  {text(text:"＝＝", fontsize:100, textcolor:"red")}
@@ -34,13 +32,13 @@ def sunSlide = {
 }
 
 def lastText ={
-  GPresentBuilder.dsl(fontfamily:"IPA Pゴシック", fontsize:50).vbox(posx:50, posy:100){
+  dsl(fontfamily:"IPA Pゴシック", fontsize:50).vbox(posx:50, posy:100){
     text(text:"こんなこともできます", fontsize:40, textcolor:"white")
   }
 }
 
 def oracleSlide = {
-  GPresentBuilder.dsl(fontfamily:"IPA Pゴシック", fontsize:50).stack(rotate:-30){
+  dsl(fontfamily:"IPA Pゴシック", fontsize:50).stack(rotate:-30){
     border{
       center{text(text:"○", fontsize:230, textcolor:"red")}
     }
@@ -48,7 +46,7 @@ def oracleSlide = {
   }
 }
 
-def cacheText = {GPresentBuilder.dsl(width:1024, height: 700, alignment:"center", background:"steelblue",
+def cacheText = {dsl(width:1024, height: 700, alignment:"center", background:"steelblue",
   fontfamily:"IPA Pゴシック", fontsize: 70).vbox(width:1500, height:700, background:"rgba(255,255,255,0.8)"){
       hbox(rotate:10){text(text:"今回は"); text(text:"Groovy", textcolor:"#0000AA", fontsize:77); text(text:"です。")}
     }
@@ -56,7 +54,7 @@ def cacheText = {GPresentBuilder.dsl(width:1024, height: 700, alignment:"center"
 
 def now = {"現在時刻は ${new Date().timeString}"}
 def testText = {
-  def txt = GPresentBuilder.dsl(fontfamily:"IPA Pゴシック",fontsize:50).text(text:now(), textcolor:"floralwhite")
+  def txt = dsl(fontfamily:"IPA Pゴシック",fontsize:50).text(text:now(), textcolor:"floralwhite")
   println txt
   def changeText = {
     Integer.MAX_VALUE.times{
@@ -67,15 +65,15 @@ def testText = {
   return txt
 }
 
-def timebox = {GPresentBuilder.dsl().vbox([{GPresentBuilder.dsl(fontfamily:"IPA Pゴシック").vbox(padding: 50){
+def timebox = {dsl().vbox([{dsl(fontfamily:"IPA Pゴシック").vbox(padding: 50){
   text(text:"""DSLはGroovyスクリプトなので
 外部DSLスクリプトだけで下のようなことも可能です""", fontsize:40)}}(),
   testText(),
-  GPresentBuilder.dsl().vbox(padding:50){text(text:"さすがにJavaFXの知識が必要になりますが…     ", fontsize:20)}])
+  dsl().vbox(padding:50){text(text:"さすがにJavaFXの知識が必要になりますが…     ", fontsize:20)}])
 }
 
 // DSLスクリプトはslidesが最終的に処理されるようになっている必要がある
-GPresentBuilder.dsl(alignment:"center", background:"steelblue", fontfamily:"IPA Pゴシック", fontsize: 50, padding:[20, 0], width:1024, height: 700)
+dsl(alignment:"center", background:"steelblue", fontfamily:"IPA Pゴシック", fontsize: 50, padding:[20, 0], width:1024, height: 700)
   .slides(name:"Groovy Presentation FX", pagecounter:true){
 
   slide{
@@ -225,7 +223,7 @@ GPresentBuilder.dsl(alignment:"center", background:"steelblue", fontfamily:"IPA 
         textarea(editable:false, column:15, row:14,
           text:"""import main.groovy.gpresentfx.GPresentBuilder
 
-GPresentBuilder.dsl().slides(
+dsl().slides(
   name:"プレゼンテーション",
   width:1024, height: 700,
   alignment:"center", background:"steelblue"){

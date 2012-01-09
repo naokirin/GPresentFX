@@ -15,6 +15,8 @@ import javafx.stage.Stage
 import javafx.event.EventHandler
 import javafx.event.Event
 import javafx.scene.input.KeyEvent
+import org.codehaus.groovy.control.CompilerConfiguration
+import org.codehaus.groovy.control.customizers.ImportCustomizer
 
 /**
  * @author naokirin
@@ -82,19 +84,28 @@ class GroovyPresentFX extends Application{
   void start(Stage stage) {
 
     def readPlugin = {file ->
+      def configuration = new CompilerConfiguration()
+      def custom = new ImportCustomizer()
+      custom.addImports('main.groovy.gpresentfx.PluginInterface', 'main.groovy.gpresentfx.SettingParentInterface')
+      configuration.addCompilationCustomizers(custom)
       String[] paths = ['.']
       def gse = new GroovyScriptEngine(paths)
       def binding = [input:''] as Binding
-
+      gse.setConfig(configuration)
       return gse.run(file.toString(), binding)
     }
 
     // TODO: 実行時引数で読みこむスクリプトを指定できるようにする
     // DSLスクリプトの読み込み
     def readPresentation = {
+      def configuration = new CompilerConfiguration()
+      def custom = new ImportCustomizer()
+      custom.addStaticImport('main.groovy.gpresentfx.GPresentBuilder', 'dsl')
+      configuration.addCompilationCustomizers(custom)
       String[] paths = ['.']
       def gse = new GroovyScriptEngine(paths)
       def binding =[input:''] as Binding
+      gse.setConfig(configuration)
 
       return gse.run('present.groovy', binding) as Slides
     }
