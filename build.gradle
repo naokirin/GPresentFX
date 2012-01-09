@@ -11,7 +11,6 @@ version = '0.1-SNAPSHOT'
 
 // Read environment and set properties
 javafxHome = System.env['JAVAFX_HOME']
-groovyfxHome = System.env['GROOVYFX']
 isRelease = !version.endsWith('SNAPSHOT')
 
 description = "Groovy Presentation From Xmas"
@@ -25,7 +24,6 @@ dependencies {
   groovy group:'org.codehaus.groovy', name:'groovy-all', version:'1.8.4'
   compile 'asm:asm:3.2'
   compile files("${javafxHome}/rt/lib/jfxrt.jar")
-  compile files("${groovyfxHome}")
 	testCompile group:'org.spockframework', name:'spock-core', version:'0.5-groovy-1.8'
 
     // optional dependencies for using Spock
