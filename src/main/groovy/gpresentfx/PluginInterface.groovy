@@ -11,3 +11,7 @@ interface PluginInterface {
   // arg2: java.util.LinkedHashMap
   Closure<? extends Node> getClosure()
 }
+
+interface SettingParentInterface{
+  boolean setParent(Object parent, Object child)
+}

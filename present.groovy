@@ -55,7 +55,6 @@ def cacheText = {dsl(width:1024, height: 700, alignment:"center", background:"st
 def now = {"現在時刻は ${new Date().timeString}"}
 def testText = {
   def txt = dsl(fontfamily:"IPA Pゴシック",fontsize:50).text(text:now(), textcolor:"floralwhite")
-  println txt
   def changeText = {
     Integer.MAX_VALUE.times{
     txt.setText(now())
@@ -74,7 +73,7 @@ def timebox = {dsl().vbox([{dsl(fontfamily:"IPA Pゴシック").vbox(padding: 50
 
 // DSLスクリプトはslidesが最終的に処理されるようになっている必要がある
 dsl(alignment:"center", background:"steelblue", fontfamily:"IPA Pゴシック", fontsize: 50, padding:[20, 0], width:1024, height: 700)
-  .slides(name:"Groovy Presentation FX", pagecounter:true){
+  .slides(name:"Groovy Presentation FX"){
 
   slide{
     text(text:"DSLで作れるプレゼン", fontsize: 90, textcolor:"floralwhite")
@@ -241,7 +240,7 @@ dsl().slides(
     }
   }
 
-  //slide(timebox())
+  slide(timebox())
 
   slide{
     vbox(padding:50){

@@ -34,81 +34,12 @@ class GroovyPresentFX extends Application{
   private static def incCounter = { if(pageCounter < page - 1) pageCounter+=1 }
   private static def decCounter = { if(pageCounter > 0) pageCounter-=1}
 
-  // 表示を変更する
-  static def slideUpdate ={
-    if(currentSlide.metaClass.respondsTo(currentSlide, 'getAlignment'))
-      topPane.setAlignment(currentSlide.getAlignment())
-    topPane.setStyle(currentSlide.getStyle())
-    topPane.children.setAll(currentSlide)
-    if(slides.getIsPageCount()){
-      def counterPane = new VBox()
-      counterPane.setPadding(new Insets(0, 5, 5, 0))
-      Text text = new Text((pageCounter+1).toString())
-      text.setFont(new Font(30))
-      counterPane.children.add(text)
-      counterPane.setAlignment(Pos.BOTTOM_RIGHT)
-      topPane.children.add(counterPane)
-    }
-  }
-
-  static def slideChange = {
-    currentSlide = slideList[pageCounter]
-    GroovyPresentFX.slideUpdate()
-  }
-
-  // 1つ先のスライドに進む
-  static def next ={
-    GroovyPresentFX.incCounter()
-    GroovyPresentFX.slideChange()}
-
-  // 1つ前のスライドに戻る
-  static def prev ={
-    GroovyPresentFX.decCounter()
-    GroovyPresentFX.slideChange()}
-
-  // 最初のスライドに戻る
-  static def home ={
-    pageCounter = 0
-    GroovyPresentFX.slideChange()}
-
-  // 最後のスライドに進む
-  static def end ={
-    pageCounter = page - 1
-    GroovyPresentFX.slideChange()}
-
   public static void main(String[] args){
     Application.launch(GroovyPresentFX, args)
   }
 
   @Override
   void start(Stage stage) {
-
-    def readPlugin = {file ->
-      def configuration = new CompilerConfiguration()
-      def custom = new ImportCustomizer()
-      custom.addImports('main.groovy.gpresentfx.PluginInterface', 'main.groovy.gpresentfx.SettingParentInterface')
-      configuration.addCompilationCustomizers(custom)
-      String[] paths = ['.']
-      def gse = new GroovyScriptEngine(paths)
-      def binding = [input:''] as Binding
-      gse.setConfig(configuration)
-      return gse.run(file.toString(), binding)
-    }
-
-    // TODO: 実行時引数で読みこむスクリプトを指定できるようにする
-    // DSLスクリプトの読み込み
-    def readPresentation = {
-      def configuration = new CompilerConfiguration()
-      def custom = new ImportCustomizer()
-      custom.addStaticImport('main.groovy.gpresentfx.GPresentBuilder', 'dsl')
-      configuration.addCompilationCustomizers(custom)
-      String[] paths = ['.']
-      def gse = new GroovyScriptEngine(paths)
-      def binding =[input:''] as Binding
-      gse.setConfig(configuration)
-
-      return gse.run('present.groovy', binding) as Slides
-    }
 
     new File('./plugin/settingParent').eachFileRecurse{file ->
       if(file.toString() ==~ /.*SettingParent\.groovy/){
@@ -124,7 +55,10 @@ class GroovyPresentFX extends Application{
       }
     }
 
-    slides = readPresentation()
+    if(getParameters().raw.isEmpty())
+      slides = readPresentation('present.groovy')
+    else
+      slides = readPresentation(getParameters().raw[0])
     slideList = []
     if(slides == null){
       slideList << new VBox()
@@ -152,7 +86,11 @@ class GroovyPresentFX extends Application{
         event = event as KeyEvent
         // F5でDSLスクリプトのリロード
         if(event.getCode() == KeyCode.F5){
-          def newSlides = readPresentation()
+          def newSlides
+          if(getParameters().raw.isEmpty())
+            newSlides = readPresentation('present.groovy')
+          else
+            newSlides = readPresentation(getParameters().raw[0])
           slideList = newSlides.presents
           page = slideList.size()
           if(page > pageCounter)
@@ -194,5 +132,77 @@ class GroovyPresentFX extends Application{
 
     stage.setScene(scene)
     stage.show()
+  }
+
+  // 表示を変更する
+  static def slideUpdate ={
+    if(currentSlide.metaClass.respondsTo(currentSlide, 'getAlignment'))
+      topPane.setAlignment(currentSlide.getAlignment())
+    topPane.setStyle(currentSlide.getStyle())
+    topPane.children.setAll(currentSlide)
+    if(slides.getIsPageCount()){
+      def counterPane = new VBox()
+      counterPane.setPadding(new Insets(0, 5, 5, 0))
+      Text text = new Text((pageCounter+1).toString())
+      text.setFont(new Font(30))
+      counterPane.children.add(text)
+      counterPane.setAlignment(Pos.BOTTOM_RIGHT)
+      topPane.children.add(counterPane)
+    }
+  }
+
+  static def slideChange = {
+    currentSlide = slideList[pageCounter]
+    GroovyPresentFX.slideUpdate()
+  }
+
+  // 1つ先のスライドに進む
+  static def next ={
+    GroovyPresentFX.incCounter()
+    GroovyPresentFX.slideChange()
+  }
+
+  // 1つ前のスライドに戻る
+  static def prev ={
+    GroovyPresentFX.decCounter()
+    GroovyPresentFX.slideChange()
+  }
+
+  // 最初のスライドに戻る
+  static def home ={
+    pageCounter = 0
+    GroovyPresentFX.slideChange()
+  }
+
+  // 最後のスライドに進む
+  static def end ={
+    pageCounter = page - 1
+    GroovyPresentFX.slideChange()
+  }
+
+  // プラグインの読み込み
+  def readPlugin = {file ->
+    def configuration = new CompilerConfiguration()
+    def custom = new ImportCustomizer()
+    custom.addImports('main.groovy.gpresentfx.PluginInterface', 'main.groovy.gpresentfx.SettingParentInterface')
+    configuration.addCompilationCustomizers(custom)
+    String[] paths = ['.']
+    def gse = new GroovyScriptEngine(paths)
+    def binding = [input:''] as Binding
+    gse.setConfig(configuration)
+    return gse.run(file.toString(), binding)
+  }
+
+  // DSLスクリプトの読み込み
+  def readPresentation = {file ->
+    def configuration = new CompilerConfiguration()
+    def custom = new ImportCustomizer()
+    custom.addStaticImport('main.groovy.gpresentfx.GPresentBuilder', 'dsl')
+    configuration.addCompilationCustomizers(custom)
+    String[] paths = ['.']
+    def gse = new GroovyScriptEngine(paths)
+    def binding =[input:''] as Binding
+    gse.setConfig(configuration)
+    return gse.run(file.toString(), binding) as Slides
   }
 }
