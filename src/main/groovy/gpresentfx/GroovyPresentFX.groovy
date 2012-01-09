@@ -92,7 +92,7 @@ class GroovyPresentFX extends Application{
     // TODO: 実行時引数で読みこむスクリプトを指定できるようにする
     // DSLスクリプトの読み込み
     def readPresentation = {
-      String[] paths = ['./script']
+      String[] paths = ['.']
       def gse = new GroovyScriptEngine(paths)
       def binding =[input:''] as Binding
 
