@@ -15,7 +15,7 @@ isRelease = !version.endsWith('SNAPSHOT')
 
 description = "Groovy Presentation From Xmas"
 mainClassName = "main.groovy.gpresentfx.GroovyPresentFX"
-test.maxParallelForks = 5
+test.maxParallelForks = 3
 
 repositories {
     mavenCentral()
