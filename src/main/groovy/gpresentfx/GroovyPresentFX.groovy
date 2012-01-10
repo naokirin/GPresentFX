@@ -88,10 +88,11 @@ class GroovyPresentFX extends Application{
         if(event.getCode() == KeyCode.F5){
           def newSlides
           if(getParameters().raw.isEmpty())
-            newSlides = readPresentation('present.groovy')
+            slides = readPresentation('present.groovy')
           else
-            newSlides = readPresentation(getParameters().raw[0])
-          slideList = newSlides.presents
+            slides = readPresentation(getParameters().raw[0])
+          stage.setTitle(slides.name)
+          slideList = slides.presents
           page = slideList.size()
           if(page > pageCounter)
             currentSlide = slideList[pageCounter]

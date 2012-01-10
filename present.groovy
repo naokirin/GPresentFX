@@ -71,9 +71,11 @@ def timebox = {dsl().vbox([{dsl(fontfamily:"IPA Pゴシック").vbox(padding: 50
   dsl().vbox(padding:50){text(text:"さすがにJavaFXの知識が必要になりますが…     ", fontsize:20)}])
 }
 
+
+// 実際に表示されるプレゼンテーション
 // DSLスクリプトはslidesが最終的に処理されるようになっている必要がある
 dsl(alignment:"center", background:"steelblue", fontfamily:"IPA Pゴシック", fontsize: 50, padding:[20, 0], width:1024, height: 700)
-  .slides(name:"Groovy Presentation FX"){
+  .slides(name:"Groovy Presentation FX", pagecounter:false){
 
   slide{
     text(text:"DSLで作れるプレゼン", fontsize: 90, textcolor:"floralwhite")
@@ -128,7 +130,7 @@ dsl(alignment:"center", background:"steelblue", fontfamily:"IPA Pゴシック", 
   slide{
     text(fontsize: 50, text: "折れ線グラフもOK")
     hbox{
-      linechart(data:["1組":[4:1.6, 5:2.1, 6:3.5, 7:3.3], "2組":[4:0.5, 5:3.4, 6:2.8, 7:3.0]], xrange: [4.0, 7.0], xunit:1, xtitle:"月", ytitle:"通信簿平均", title:"通信簿平均(月)")
+      linechart(data:["1組":[4:1.6, 5:2.1, 6:3.5, 7:3.3], "2組":[4:0.5, 5:3.4, 6:2.8, 7:3.0]], xrange: [4.0, 7.0], xunit:1, xtitle:"月", ytitle:"通信簿平均", title:"通信簿平均(月)", xautorange:false)
       linechart(data:["f":["A":10, "B":4, "C":5], "g":["A":3, "B":2, "C":4]], xcategory:true)
     }
   }
@@ -240,6 +242,7 @@ dsl().slides(
     }
   }
 
+  // 時刻表示をしているスライド
   slide(timebox())
 
   slide{
@@ -274,7 +277,7 @@ dsl().slides(
     hbox{
       text(text:"これが現状の")
       text(text:"Groovy Presentation FX", textcolor:"red")
-     text(text:"です")
+      text(text:"です")
     }
   }
 
