@@ -1,4 +1,4 @@
-package test.groovy
+package test.groovy.gpresentfx.chart
 
 import spock.lang.Specification
 import main.groovy.gpresentfx.chart.ScatterChartFactory
@@ -8,7 +8,6 @@ import javafx.scene.chart.NumberAxis
 import javafx.scene.chart.XYChart
 import javafx.geometry.Side
 import javafx.scene.chart.CategoryAxis
-import javafx.geometry.Pos
 
 class ScatterChartFactoryDefaultAttributeTest extends Specification{
   ScatterChart scatterChart = ScatterChartFactory.newInstance(GPresentBuilder.dsl(), [:])

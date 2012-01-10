@@ -1,4 +1,4 @@
-package test.groovy
+package test.groovy.gpresentfx.chart
 
 import spock.lang.Specification
 import main.groovy.gpresentfx.chart.BarChartFactory
@@ -8,7 +8,6 @@ import javafx.scene.chart.NumberAxis
 import javafx.scene.chart.XYChart
 import javafx.geometry.Side
 import javafx.scene.chart.CategoryAxis
-import javafx.geometry.Pos
 
 class BarChartFactoryDefaultAttributeTest extends Specification{
   BarChart barChart = BarChartFactory.newInstance(GPresentBuilder.dsl(), [xcategory:true])

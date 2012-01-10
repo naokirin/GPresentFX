@@ -1,4 +1,4 @@
-package test.groovy
+package test.groovy.gpresentfx.chart
 
 import spock.lang.Specification
 import main.groovy.gpresentfx.chart.PieChartFactory

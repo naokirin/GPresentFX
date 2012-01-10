@@ -1,4 +1,4 @@
-package test.groovy
+package test.groovy.gpresentfx.layout
 
 import spock.lang.Specification
 import main.groovy.gpresentfx.layout.SlidesFactory
