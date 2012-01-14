@@ -41,6 +41,7 @@ class GroovyPresentFX extends Application{
   @Override
   void start(Stage stage) {
 
+    // プレゼンテーションとプラグインスクリプトの読み込み
     new File('./plugin/settingParent').eachFileRecurse{file ->
       if(file.toString() ==~ /.*SettingParent\.groovy/){
         def plugin = readPlugin(file.toString()) as SettingParentInterface
@@ -80,6 +81,7 @@ class GroovyPresentFX extends Application{
       }
     })
 
+    // シーンのセッティング
     Scene scene = new Scene(topPane)
     scene.setOnKeyReleased(new EventHandler(){
       void handle(Event event){
@@ -152,6 +154,7 @@ class GroovyPresentFX extends Application{
     }
   }
 
+  // スライドの変更
   static def slideChange = {
     currentSlide = slideList[pageCounter]
     GroovyPresentFX.slideUpdate()
@@ -182,7 +185,7 @@ class GroovyPresentFX extends Application{
   }
 
   // プラグインの読み込み
-  def readPlugin = {file ->
+  private def readPlugin = {file ->
     def configuration = new CompilerConfiguration()
     def custom = new ImportCustomizer()
     custom.addImports('main.groovy.gpresentfx.PluginInterface', 'main.groovy.gpresentfx.SettingParentInterface')
@@ -195,7 +198,7 @@ class GroovyPresentFX extends Application{
   }
 
   // DSLスクリプトの読み込み
-  def readPresentation = {file ->
+  private def readPresentation = {file ->
     def configuration = new CompilerConfiguration()
     def custom = new ImportCustomizer()
     custom.addStaticImport('main.groovy.gpresentfx.GPresentBuilder', 'dsl')
