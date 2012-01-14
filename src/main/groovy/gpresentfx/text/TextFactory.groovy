@@ -34,7 +34,10 @@ class TextFactory extends AbstractNodeFactory{
   }
 
   private static Text createText(Map attribute){
-    return new Text(attribute[textTextKeyword].toString())
+    if(attribute[textTextKeyword] != null)
+      return new Text(attribute[textTextKeyword].toString())
+    else
+      return new Text("")
   }
 
   private static void setFont(Text obj, Map attribute, GPresentBuilder pdb){
@@ -45,12 +48,12 @@ class TextFactory extends AbstractNodeFactory{
       family = pdb.defaultFontFamily
 
     obj.setFont(
-      Font.font(family, attribute[fontSizeKeyword]!=null?(int)attribute[fontSizeKeyword]:pdb.defaultFontSize))
+      Font.font(family, attribute[fontSizeKeyword]!=null?(double)attribute[fontSizeKeyword]:pdb.defaultFontSize))
   }
 
   private static void setUnderline(Text obj, Map attribute, GPresentBuilder pdb){
     if(attribute[underlineKeyword] != null)
-      obj.setUnderline(true)
+      obj.setUnderline((boolean)attribute[underlineKeyword])
   }
 
   private static void setTextColor(Text obj, Map attribute, GPresentBuilder pdb){
