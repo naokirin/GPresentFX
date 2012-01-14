@@ -57,9 +57,10 @@ class TextFactory extends AbstractNodeFactory{
   }
 
   private static void setTextColor(Text obj, Map attribute, GPresentBuilder pdb){
+    def rgbaRegex = /rgba\( *([0-9]+) *, *([0-9]+) *, *([0-9]+) *, *([0-9 \.]+) *\)/
     if(attribute[textColorKeyword] != null){
-      if(attribute[textColorKeyword].toString() ==~ /rgba\( *([0-9]+) *, *([0-9]+) *, *([0-9]+) *, *([0-9 \.]+) *\)/)
-        attribute[textColorKeyword].toString().eachMatch(/rgba\( *([0-9]+) *, *([0-9]+) *, *([0-9]+) *, *([0-9 \.]+) *\)/){
+      if(attribute[textColorKeyword].toString() ==~ rgbaRegex)
+        attribute[textColorKeyword].toString().eachMatch(rgbaRegex){
           g0, g1, g2, g3, g4 ->
           obj.setFill(Color.rgb(Integer.parseInt(g1), Integer.parseInt(g2), Integer.parseInt(g3), Double.parseDouble(g4)))
         }
@@ -67,8 +68,8 @@ class TextFactory extends AbstractNodeFactory{
         obj.setFill(Color.web(attribute[textColorKeyword].toString()))
     }
     else{
-      if(pdb.defaultTextColor.toString() ==~ /rgba\( *([0-9]+) *, *([0-9]+) *, *([0-9]+) *, *([0-9 \.]+) *\)/)
-        pdb.defaultTextColor.toString().eachMatch(/rgba\( *([0-9]+) *, *([0-9]+) *, *([0-9]+) *, *([0-9 \.]+) *\)/){
+      if(pdb.defaultTextColor.toString() ==~ rgbaRegex)
+        pdb.defaultTextColor.toString().eachMatch(rgbaRegex){
           g0, g1, g2, g3, g4 ->
           obj.setFill(Color.rgb(Integer.parseInt(g1), Integer.parseInt(g2), Integer.parseInt(g3), Double.parseDouble(g4)))
         }
