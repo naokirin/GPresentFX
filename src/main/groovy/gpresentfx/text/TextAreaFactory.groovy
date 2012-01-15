@@ -61,7 +61,10 @@ class TextAreaFactory extends AbstractNodeFactory{
   }
 
   private static TextArea createTextArea(Map attribute){
-    return new TextArea(attribute[textAreaTextKeyword].toString())
+    if(attribute[textAreaTextKeyword] != null)
+      return new TextArea(attribute[textAreaTextKeyword].toString())
+    else
+      return new TextArea("")
   }
 
   private static void setWidth(TextArea area, Map attribute, GPresentBuilder pdb){
