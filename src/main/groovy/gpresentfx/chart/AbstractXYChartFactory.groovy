@@ -4,7 +4,7 @@ import javafx.scene.chart.Axis
 import javafx.scene.chart.CategoryAxis
 import javafx.scene.chart.NumberAxis
 
-class AbstractXYChartFactory extends AbstractChartFactory{
+abstract class AbstractXYChartFactory extends AbstractChartFactory{
   static final String xAxisCategoryKeyword = 'xcategory'
   static final String yAxisCategoryKeyword = 'ycategory'
   static final String xTitleKeyword = 'xtitle'

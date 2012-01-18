@@ -4,6 +4,7 @@ import javafx.scene.chart.LineChart
 import javafx.scene.chart.XYChart
 import javafx.collections.FXCollections
 import com.sun.javafx.collections.ObservableListWrapper
+import main.groovy.gpresentfx.GPresentBuilder
 
 /**
  * @author naokirin
@@ -12,7 +13,7 @@ import com.sun.javafx.collections.ObservableListWrapper
 class LineChartFactory extends AbstractXYChartFactory{
 
   /** LineChartのインスタンスを生成する */
-  static LineChart newInstance(pdb, Map attribute){
+  static LineChart newInstance(GPresentBuilder pdb, Map attribute){
 
     def obj = new LineChart(createXAxis(attribute), createYAxis(attribute), createData(attribute))
 

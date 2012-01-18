@@ -4,6 +4,7 @@ import javafx.scene.image.ImageView
 import javafx.scene.image.Image
 
 import main.groovy.gpresentfx.AbstractNodeFactory
+import main.groovy.gpresentfx.GPresentBuilder
 
 class ImageViewFactory extends AbstractNodeFactory{
   static final String imageUrlKeyword = 'url'
@@ -12,7 +13,7 @@ class ImageViewFactory extends AbstractNodeFactory{
   static final String imagePreservedRatioKeyword = 'preservedratio'
 
  /** イメージビューの生成 */
-  static ImageView newInstance(pdb, Map attribute){
+  static ImageView newInstance(GPresentBuilder pdb, Map attribute){
     def obj = new ImageView()
 
     setImage(obj, attribute, pdb)
@@ -46,4 +47,5 @@ class ImageViewFactory extends AbstractNodeFactory{
     else
       obj.setPreserveRatio(true)
   }
+
 }

@@ -5,7 +5,7 @@ import javafx.scene.Node
 /**
  * @author naokirin
  */
-class AbstractNodeFactory {
+abstract class AbstractNodeFactory{
   static final String positionXKeyword = 'posx'
   static final String positionYKeyword = 'posy'
   static final String rotateKeyword = 'rotate'
@@ -24,4 +24,6 @@ class AbstractNodeFactory {
     if(attribute[rotateKeyword] != null)
       node.setRotate((double)attribute[rotateKeyword])
   }
+
 }
+

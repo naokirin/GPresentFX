@@ -4,6 +4,7 @@ import javafx.scene.chart.PieChart
 import javafx.scene.chart.PieChart.Data
 import javafx.collections.FXCollections
 import com.sun.javafx.collections.ObservableListWrapper
+import main.groovy.gpresentfx.GPresentBuilder
 
 class PieChartFactory extends AbstractChartFactory{
 
@@ -11,7 +12,7 @@ class PieChartFactory extends AbstractChartFactory{
   static final String startAngleKeyword = 'startangle'
 
     /** PieChartの生成 */
-  static PieChart newInstance(pdb, Map attribute) {
+  static PieChart newInstance(GPresentBuilder pdb, Map attribute) {
     def obj = new PieChart(createData(attribute))
 
     setStartAngle(obj, attribute, pdb)

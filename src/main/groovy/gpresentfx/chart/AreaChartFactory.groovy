@@ -4,6 +4,7 @@ import javafx.scene.chart.AreaChart
 import javafx.scene.chart.XYChart
 import javafx.collections.FXCollections
 import com.sun.javafx.collections.ObservableListWrapper
+import main.groovy.gpresentfx.GPresentBuilder
 
 /**
  * @author naokirin
@@ -12,7 +13,7 @@ import com.sun.javafx.collections.ObservableListWrapper
 class AreaChartFactory extends AbstractXYChartFactory {
 
   /** AreaChartのインスタンスを生成する */
-  static AreaChart newInstance(pdb, Map attribute){
+  static AreaChart newInstance(GPresentBuilder pdb, Map attribute){
 
     def obj = new AreaChart(createXAxis(attribute), createYAxis(attribute), createData(attribute))
 

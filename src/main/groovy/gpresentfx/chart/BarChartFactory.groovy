@@ -19,7 +19,7 @@ class BarChartFactory extends AbstractXYChartFactory{
   static final String categoryGapKeyword = 'categorygap'
 
   /** BarChartのインスタンスを生成する */
-  static BarChart newInstance(pdb, Map attribute){
+  static BarChart newInstance(GPresentBuilder pdb, Map attribute){
 
     def obj = new BarChart(createXAxis(attribute), createYAxis(attribute), createData(attribute))
 
