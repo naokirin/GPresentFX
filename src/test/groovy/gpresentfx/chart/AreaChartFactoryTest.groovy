@@ -142,8 +142,12 @@ class AreaChartFactoryTitleSideAttributeTest extends Specification{
     then:
       areaChart.getTitle() == title
     where:
-      attribute << [[title:""], [title:" "], [title:"azAZ"], [title:"09"], [title:"日本語"]]
-      title     << [""        , " "        , "azAZ"        , "09"        , "日本語"]
+      attribute       | title
+      [title:""]      | ""
+      [title:" "]     | " "
+      [title:"azAZ"]  | "azAZ"
+      [title:"09"]    | "09"
+      [title:"日本語"]| "日本語"
   }
 
   def "titleside"(Map attribute, Side side){
@@ -152,8 +156,13 @@ class AreaChartFactoryTitleSideAttributeTest extends Specification{
     then:
       areaChart.getTitleSide() == side
     where:
-      attribute << [[titleside:"top"], [titleside:"TOP"], [titleside:"Top"], [titleside:"bottom"], [titleside:"right"], [titleside:"left"]]
-      side      << [Side.TOP         , Side.TOP          , Side.TOP         , Side.BOTTOM          , Side.RIGHT         , Side.LEFT]
+      attribute              | side
+      [titleside:"top"]     | Side.TOP
+      [titleside:"TOP"]     | Side.TOP
+      [titleside:"Top"]     | Side.TOP
+      [titleside:"bottom"]  | Side.BOTTOM
+      [titleside:"right"]   | Side.RIGHT
+      [titleside:"left"]    | Side.LEFT
   }
 }
 
@@ -166,8 +175,12 @@ class AreaChartFactoryAxisTitleAttributeTest extends Specification{
     then:
       areaChart.getXAxis().getLabel() == title
     where:
-      attribute << [[xtitle:""], [xtitle:" "], [xtitle:"azAZ"], [xtitle:"09"], [xtitle:"日本語"]]
-      title     << [""        , " "        , "azAZ"        , "09"        , "日本語"]
+      attribute        | title
+      [xtitle:""]      | ""
+      [xtitle:" "]     | " "
+      [xtitle:"azAZ"]  | "azAZ"
+      [xtitle:"09"]    | "09"
+      [xtitle:"日本語"]| "日本語"
   }
 
 def "ytitle"(Map attribute, String title){
@@ -176,8 +189,13 @@ def "ytitle"(Map attribute, String title){
     then:
       areaChart.getYAxis().getLabel() == title
     where:
-      attribute << [[ytitle:""], [ytitle:" "], [ytitle:"azAZ"], [ytitle:"09"], [ytitle:"日本語"]]
-      title     << [""        , " "        , "azAZ"        , "09"        , "日本語"]
+      attribute         | title
+      [ytitle:""]       | ""
+      [ytitle:" "]      | " "
+      [ytitle:"azAZ"]   | "azAZ"
+      [ytitle:"09"]     | "09"
+      [ytitle:"日本語"] | "日本語"
+
   }
 }
 
@@ -255,9 +273,10 @@ class AreaChartFactoryRangeAttributeTest extends Specification{
       areaChart.getXAxis().getLowerBound() == lower
       areaChart.getXAxis().getUpperBound() == upper
     where:
-      attribute << [[xrange:[0, 1]], [xrange:[0.0, 0.1]], [xrange:[-0.2, -0.1]]]
-      lower     << [0              , 0.0                , -0.2]
-      upper     << [1              , 0.1                , -0.1]
+      attribute             | lower | upper
+      [xrange:[0, 1]]       | 0     |1
+      [xrange:[0.0, 0.1]]   | 0.0   |0.1
+      [xrange:[-0.2, -0.1]] | -0.2  |-0.1
   }
 }
 
@@ -270,8 +289,9 @@ class AreaChartFactoryUnitAttributeTest extends Specification{
     then:
       areaChart.getXAxis().getTickUnit() == value
     where:
-      attribute << [[xunit:1, xautorange:false], [xunit:0.1, xautorange:false]]
-      value     << [1        , 0.1]
+      attribute                      | value
+      [xunit:1, xautorange:false]   | 1
+      [xunit:0.1, xautorange:false] | 0.1
   }
 
   def "yunit"(Map attribute, double value){
@@ -280,8 +300,9 @@ class AreaChartFactoryUnitAttributeTest extends Specification{
     then:
       areaChart.getYAxis().getTickUnit() == value
     where:
-      attribute << [[yunit:1, yautorange:false], [yunit:0.1, yautorange:false]]
-      value     << [1        , 0.1]
+      attribute                     | value
+     [yunit:1, yautorange:false]   | 1
+     [yunit:0.1, yautorange:false] | 0.1
   }
 }
 
@@ -294,8 +315,10 @@ class AreaChartFactoryConfigurationAttributeTest extends Specification{
     then:
       areaChart.getRotate() == value
     where:
-      attribute << [[rotate:1], [rotate:0.1], [rotate:10.0f]]
-      value     << [1         , 0.1         , 10.0]
+      attribute       | value
+      [rotate:1]      | 1
+      [rotate:0.1]    | 0.1
+      [rotate:10.0f]  | 10.0
   }
 
   def "rotate of minus value"(Map attribute, double value){
@@ -304,8 +327,10 @@ class AreaChartFactoryConfigurationAttributeTest extends Specification{
     then:
       areaChart.getRotate() == value
     where:
-      attribute << [[rotate:-1], [rotate: -0.1], [rotate:-10.0f]]
-      value     << [-1         , -0.1          , -10.0f]
+      attribute       | value
+      [rotate:-1]     | -1
+      [rotate: -0.1]  | -0.1
+      [rotate:-10.0f] | -10.0f
   }
 
   def "rotate over 360"(Map attribute, double value){
@@ -314,8 +339,12 @@ class AreaChartFactoryConfigurationAttributeTest extends Specification{
     then:
       areaChart.getRotate() == value
     where:
-      attribute << [[rotate:361], [rotate:360.1], [rotate:360.0f], [rotate:-361], [rotate:-360.1]]
-      value     << [361         , 360.1         , 360.0f         , -361         , -360.1]
+      attribute       | value
+      [rotate:361]    | 361
+      [rotate:360.1]  | 360.1
+      [rotate:360.0f] | 360.0
+      [rotate:-361]   | -361
+      [rotate:-360.1] | -360.1
   }
 
   def "posx"(Map attribute, double value){
@@ -324,8 +353,12 @@ class AreaChartFactoryConfigurationAttributeTest extends Specification{
     then:
       areaChart.getTranslateX() == value
     where:
-      attribute << [[posx:0], [posx:0.1], [posx:1], [posx:0.1f], [posx:-1], [posx:-0.1]]
-      value     << [0       , 0.1       , 1       , 0.1f       , -1       , -0.1]
+      attribute   | value
+      [posx:0]    | 0
+      [posx:0.1]  | 0.1
+      [posx:1]    | 1
+      [posx:-1]   | -1
+      [posx:-0.1] | -0.1
   }
 
   def "posy"(Map attribute, double value){
@@ -334,7 +367,11 @@ class AreaChartFactoryConfigurationAttributeTest extends Specification{
     then:
       areaChart.getTranslateY() == value
     where:
-      attribute << [[posy:0], [posy:0.1], [posy:1], [posy:0.1f], [posy:-1], [posy:-0.1]]
-      value     << [0       , 0.1       , 1       , 0.1f       , -1       , -0.1]
+      attribute  | value
+      [posy:0]   | 0
+      [posy:0.1] | 0.1
+      [posy:1]   | 1
+      [posy:-1]  | -1
+      [posy:-0.1]| -0.1
   }
 }
