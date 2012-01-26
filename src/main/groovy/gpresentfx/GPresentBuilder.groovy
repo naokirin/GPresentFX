@@ -48,27 +48,17 @@ class GPresentBuilder extends BuilderSupport{
   static final String webViewFontScaleKeyword = 'fontscale'
 
 
-  static LinkedHashMap dslBranchingMap = [
-      slides : {pdb, attribute -> return SlidesFactory.newInstance(pdb, attribute)},
-      slide : {pdb, attribute -> return SlideFactory.newInstance(pdb, attribute)},
-      hbox : {pdb, attribute -> return BoxLayoutFactory.newInstance(pdb, new HBox(), attribute)},
-      vbox : {pdb, attribute -> return BoxLayoutFactory.newInstance(pdb, new VBox(), attribute)},
-      stack : {pdb, attribute -> return BoxLayoutFactory.newInstance(pdb, new StackPane(), attribute)},
-      border : {pdb, attribute -> return BorderPaneFactory.newInstance(pdb, attribute)},
-      top : {pdb, attribute -> return BorderLayoutFactory.newInstance(pdb, borderTopKeyword, attribute)},
-      left : {pdb, attribute -> return BorderLayoutFactory.newInstance(pdb, borderLeftKeyword, attribute)},
-      center : {pdb, attribute -> return BorderLayoutFactory.newInstance(pdb, borderCenterKeyword, attribute)},
-      right : {pdb, attribute -> return BorderLayoutFactory.newInstance(pdb, borderRightKeyword, attribute)},
-      bottom : {pdb, attribute -> return BorderLayoutFactory.newInstance(pdb, borderBottomKeyword, attribute)},
-      text : {pdb, attribute -> return TextFactory.newInstance(pdb, attribute)},
-      image : {pdb, attribute -> return ImageViewFactory.newInstance(pdb, attribute)},
-      piechart : {pdb, attribute -> return PieChartFactory.newInstance(pdb, attribute)},
-      linechart : {pdb, attribute -> return LineChartFactory.newInstance(pdb, attribute)},
-      scatterchart : {pdb, attribute -> return ScatterChartFactory.newInstance(pdb, attribute)},
-      barchart : {pdb, attribute -> return BarChartFactory.newInstance(pdb, attribute)},
-      areachart : {pdb, attribute -> return AreaChartFactory.newInstance(pdb, attribute)},
-      bubblechart : {pdb, attribute -> return BubbleChartFactory.newInstance(pdb, attribute)},
-      textarea : {pdb, attribute -> return TextAreaFactory.newInstance(pdb, attribute)}]
+  static void registerDsl(PluginInterface plugin){
+    if(dslBranchingMap[plugin.name] == null)
+      dslBranchingMap[plugin.name] = plugin.closure
+  }
+  
+  static void registerDsl(String name, Closure closure){
+    if(dslBranchingMap[name] == null)
+      dslBranchingMap[name] = closure
+  }
+
+  static LinkedHashMap dslBranchingMap = []
 
   static List settingParentList =[
     new SettingParentInterface(){

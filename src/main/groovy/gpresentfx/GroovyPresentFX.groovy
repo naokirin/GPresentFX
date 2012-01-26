@@ -3,7 +3,6 @@ package main.groovy.gpresentfx
 import javafx.scene.input.KeyCode
 import javafx.application.Platform
 import javafx.scene.layout.VBox
-import main.groovy.gpresentfx.layout.Slides
 import javafx.scene.text.Text
 import javafx.geometry.Pos
 import javafx.scene.text.Font
@@ -17,6 +16,11 @@ import javafx.event.Event
 import javafx.scene.input.KeyEvent
 import org.codehaus.groovy.control.CompilerConfiguration
 import org.codehaus.groovy.control.customizers.ImportCustomizer
+import main.groovy.gpresentfx.chart.*
+import main.groovy.gpresentfx.image.*
+import main.groovy.gpresentfx.layout.*
+import main.groovy.gpresentfx.text.*
+import javafx.scene.layout.HBox
 
 /**
  * @author naokirin
@@ -41,18 +45,18 @@ class GroovyPresentFX extends Application{
   @Override
   void start(Stage stage) {
 
+    // デフォルトのDSLの設定
+    settingDefaultDsl()
+
     // プレゼンテーションとプラグインスクリプトの読み込み
     new File('./plugin/settingParent').eachFileRecurse{file ->
       if(file.toString() ==~ /.*SettingParent\.groovy/){
-        def plugin = readPlugin(file.toString()) as SettingParentInterface
-        GPresentBuilder.settingParentList << plugin
+        GPresentBuilder.settingParentList << readPlugin(file.toString()) as SettingParentInterface
       }
     }
     new File('./plugin').eachFileRecurse{file ->
       if(file.toString() ==~ /.*Plugin\.groovy/){
-        def plugin = readPlugin(file.toString()) as PluginInterface
-        if(GPresentBuilder.dslBranchingMap[plugin.name] == null)
-          GPresentBuilder.dslBranchingMap[plugin.name] = plugin.closure
+        GPresentBuilder.registerDsl(readPlugin(file.toString()) as PluginInterface)
       }
     }
 
@@ -192,9 +196,8 @@ class GroovyPresentFX extends Application{
     configuration.addCompilationCustomizers(custom)
     String[] paths = ['.']
     def gse = new GroovyScriptEngine(paths)
-    def binding = [input:''] as Binding
     gse.setConfig(configuration)
-    return gse.run(file.toString(), binding)
+    return gse.loadScriptByName(file.toString()).newInstance()
   }
 
   // DSLスクリプトの読み込み
@@ -209,4 +212,29 @@ class GroovyPresentFX extends Application{
     gse.setConfig(configuration)
     return gse.run(file.toString(), binding) as Slides
   }
+
+  // デフォルトのDSLの設定
+  private settingDefaultDsl(){
+    GPresentBuilder.registerDsl("slides", {pdb, attribute -> return SlidesFactory.newInstance(pdb, attribute)})
+    GPresentBuilder.registerDsl("slide", {pdb, attribute -> return SlideFactory.newInstance(pdb, attribute)})
+    GPresentBuilder.registerDsl("hbox",  {pdb, attribute -> return BoxLayoutFactory.newInstance(pdb, new HBox(), attribute)})
+    GPresentBuilder.registerDsl("vbox", {pdb, attribute -> return BoxLayoutFactory.newInstance(pdb, new VBox(), attribute)})
+    GPresentBuilder.registerDsl("stack", {pdb, attribute -> return BoxLayoutFactory.newInstance(pdb, new StackPane(), attribute)})
+    GPresentBuilder.registerDsl("border", {pdb, attribute -> return BorderPaneFactory.newInstance(pdb, attribute)})
+    GPresentBuilder.registerDsl("top", {pdb, attribute -> return BorderLayoutFactory.newInstance(pdb, GPresentBuilder.borderTopKeyword, attribute)})
+    GPresentBuilder.registerDsl("left", {pdb, attribute -> return BorderLayoutFactory.newInstance(pdb, GPresentBuilder.borderLeftKeyword, attribute)})
+    GPresentBuilder.registerDsl("center", {pdb, attribute -> return BorderLayoutFactory.newInstance(pdb, GPresentBuilder.borderCenterKeyword, attribute)})
+    GPresentBuilder.registerDsl("right", {pdb, attribute -> return BorderLayoutFactory.newInstance(pdb, GPresentBuilder.borderRightKeyword, attribute)})
+    GPresentBuilder.registerDsl("bottom", {pdb, attribute -> return BorderLayoutFactory.newInstance(pdb, GPresentBuilder.borderBottomKeyword, attribute)})
+    GPresentBuilder.registerDsl("text", {pdb, attribute -> return TextFactory.newInstance(pdb, attribute)})
+    GPresentBuilder.registerDsl("image", {pdb, attribute -> return ImageViewFactory.newInstance(pdb, attribute)})
+    GPresentBuilder.registerDsl("piechart", {pdb, attribute -> return PieChartFactory.newInstance(pdb, attribute)})
+    GPresentBuilder.registerDsl("linechart", {pdb, attribute -> return LineChartFactory.newInstance(pdb, attribute)})
+    GPresentBuilder.registerDsl("scatterchart", {pdb, attribute -> return ScatterChartFactory.newInstance(pdb, attribute)})
+    GPresentBuilder.registerDsl("barchart", {pdb, attribute -> return BarChartFactory.newInstance(pdb, attribute)})
+    GPresentBuilder.registerDsl("areachart", {pdb, attribute -> return AreaChartFactory.newInstance(pdb, attribute)})
+    GPresentBuilder.registerDsl("bubblechart", {pdb, attribute -> return BubbleChartFactory.newInstance(pdb, attribute)})
+    GPresentBuilder.registerDsl("textarea", {pdb, attribute -> return TextAreaFactory.newInstance(pdb, attribute)})
+  }
 }
+
